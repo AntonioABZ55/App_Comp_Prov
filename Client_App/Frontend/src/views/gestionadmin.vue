@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="bg-success text-light">
     <header class="navbar">
-      <!-- Mover la imagen aquí para que esté en el lado izquierdo -->
+      
       <div class="navbar-container">
-        <img src="@/assets/logodreamm.jpg" alt="Perfil" class="perfil-icono" />
+        <img src="../assets/logodreamm.jpg" alt="Perfil" class="perfil-icono" />
       </div>
 
       <nav>

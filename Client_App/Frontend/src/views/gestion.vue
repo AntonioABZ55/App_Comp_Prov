@@ -1,46 +1,47 @@
-<template>
+<<template>
   <div id="app" class="bg-success text-light">
-    <header class="navbar">
+    <header class="navbar navbar-expand-lg navbar-dark bg-success">
       <!-- Mover la imagen aquí para que esté en el lado izquierdo -->
       <div class="navbar-container">
-        <img src="@/assets/logodreamm.jpg" alt="Perfil" class="perfil-icono" />
+        <img src="../assets/logodreamm.jpg" alt="Perfil" class="perfil-icono" />
       </div>
 
-      <nav>
-        <ul>
-          <li>Mis competencias</li> 
-          <li>Orden de compra</li> 
-          <li>Soporte</li> 
+      <nav class="navbar-nav ml-auto">
+        <ul class="navbar-nav d-flex align-items-center">
+          <li class="nav-item">Mis competencias</li>
+          <li class="nav-item">Orden de compra</li>
+          <li class="nav-item">Soporte</li>
 
-          <li>
+          <li class="nav-item">
             <input
               type="text"
               placeholder="Buscar..."
               v-model="busqueda"
               @input="realizarBusqueda"
+              class="form-control"
             />
           </li>
 
-          <li>
+          <li class="nav-item">
             <i class="fas fa-user-circle" @click="irAperfil"></i>
           </li>
         </ul>
       </nav>
     </header>
 
-    <main>
+    <main class="container py-4">
       <div class="competencias-container">
         <div class="gestion-competencias">
-          <span>Gestionar competencias</span>
+          <span class="h3 font-weight-bold">Gestionar competencias</span>
         </div>
 
-        <div class="listado-competencias">
-          <span>Listado de competencias dadas de alta por el cliente</span>
+        <div class="listado-competencias my-4">
+          <span class="h4 font-weight-bold">Listado de competencias dadas de alta por el cliente</span>
         </div>
 
         <!-- Tabla de competencias -->
-        <table class="competencias-table">
-          <thead>
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="thead-dark">
             <tr>
               <th>Nombre de Competencia</th>
               <th>Descripción</th>
@@ -53,7 +54,7 @@
               <td>{{ competencia.descripcion }}</td>
               <td>
                 <!-- Botón de eliminar -->
-                <button @click="eliminarCompetencia(index)" class="btn-eliminar">
+                <button @click="eliminarCompetencia(index)" class="btn btn-danger btn-sm">
                   Eliminar
                 </button>
               </td>
@@ -99,126 +100,105 @@ export default {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: #4CAF50;
-  border-bottom: 1px solid #ddd;
-}
-
-.navbar-container {
-  background-color: #d3f8d3;
-}
-
-.navbar img.perfil-icono {
+/* Navbar */
+.navbar-container img.perfil-icono {
   width: 50px;
   height: 50px;
   margin-right: 20px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+.navbar-nav {
   margin-left: auto;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-item .form-control {
+  width: 150px;
+}
+
+.navbar-nav .nav-item i {
+  font-size: 24px;
+}
+
+/* Competencias Section */
+.competencias-container {
+  padding: 2rem;
+  background-color: #f4f4f4;
 }
 
 .gestion-competencias {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
-
 
 .listado-competencias {
-  margin-top: 40px;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 2rem;
 }
 
-/* Tabla de competencias */
-.competencias-table {
+.table {
   width: 100%;
   margin-top: 20px;
-  border-collapse: collapse;
   background-color: #fff;
   color: #333;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden; 
 }
 
-.competencias-table th,
-.competencias-table td {
-  padding: 12px;
+.table th,
+.table td {
+  padding: 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
 
-.competencias-table th {
+.table th {
   background-color: #4CAF50;
   color: white;
   font-size: 18px;
   font-weight: bold;
-  text-transform: uppercase; 
+  text-transform: uppercase;
 }
 
-.competencias-table tbody tr {
+.table tbody tr {
   transition: background-color 0.3s ease;
 }
 
-.competencias-table tbody tr:hover {
+.table tbody tr:hover {
   background-color: #f4f4f4;
 }
 
-.competencias-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9; 
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-.competencias-table tbody tr td:first-child {
+.table td:first-child {
   font-weight: bold;
 }
 
-.competencias-table td {
+.table td {
   font-size: 16px;
   color: #555;
 }
 
-
+/* Botón eliminar */
 .btn-eliminar {
-  background-color: #f44336; 
+  background-color: #f44336;
   color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
 .btn-eliminar:hover {
-  background-color: #d32f2f; 
+  background-color: #d32f2f;
 }
-
-.nombre-descripcion {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
-
-.nombre, .descripcion {
-  font-size: 30px;
-  font-weight: bold;
-}
-
 </style>
