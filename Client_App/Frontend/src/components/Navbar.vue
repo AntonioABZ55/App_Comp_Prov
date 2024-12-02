@@ -11,7 +11,7 @@
         <li><router-link to="/catalogo">Каталог</router-link></li>
         <li><router-link to="/servicios">Услуги</router-link></li>
         <li><router-link to="/pago">Доставка и оплата</router-link></li>
-        <li><router-link to="/contact">Контакты</router-link></li>
+        <li><router-link to="/contact">Competencia</router-link></li>
       </ul>
       <div class="navbar-contact">
         <span class="phone-number">+7 (495) 490-27-89</span>
@@ -26,53 +26,72 @@
             <i class="fas fa-shopping-cart"></i>
           </router-link>
         </div>
-        <button class="navbar-cart" @click="openLoginModal">Войти</button> <!-- Botón de Login -->
+        <button class="navbar-cart" @click="openLoginModal">Login</button> <!-- Botón de Login -->
       </div>
     </nav>
 
     <!-- Modal de Login -->
     <div v-if="isLoginModalOpen" class="modal-overlay" @click="closeLoginModal">
-      <div class="modal-content" @click.stop>
-        <h2>Вход</h2>
-        <form @submit.prevent="submitLogin">
-          <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required />
-          </div>
-          <div>
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" v-model="password" required />
-          </div>
-          <button type="submit">Войти</button>
-          <button type="button" @click="showRegister">Создать аккаунт</button>
-          <button type="button" @click="closeLoginModal">Закрыть</button>
-        </form>
-      </div>
+  <div class="modal-content" @click.stop>
+    <div class="modal-header" style="position: relative;">
+      <h2>Login</h2>
+      <span class="close" @click="closeLoginModal" style="position: absolute; top: 0; right: 0; cursor: pointer;">x</span>
     </div>
+    <form @submit.prevent="submitLogin">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password" required />
+      </div>
+      <button type="submit">Iniciar Sesión</button>
+      <p>
+        ¿No tienes una cuenta? 
+        <a href="#" @click.prevent="showRegister">Regístrate aquí</a>
+      </p>
+    </form>
+  </div>
+</div>
 
-    <!-- Modal de Registro -->
+
+
+    <!-- Modal de Register -->
     <div v-if="isRegisterModalOpen" class="modal-overlay" @click="closeRegisterModal">
-      <div class="modal-content" @click.stop>
-        <h2>Регистрация</h2>
-        <form @submit.prevent="submitRegister">
-          <div>
-            <label for="reg-email">Email:</label>
-            <input type="email" id="reg-email" v-model="regEmail" required />
-          </div>
-          <div>
-            <label for="reg-password">Пароль:</label>
-            <input type="password" id="reg-password" v-model="regPassword" required />
-          </div>
-          <div>
-            <label for="confirm-password">Подтверждение пароля:</label>
-            <input type="password" id="confirm-password" v-model="confirmPassword" required />
-          </div>
-          <button type="submit">Создать аккаунт</button>
-          <button type="button" @click="showLogin">Уже есть аккаунт? Войти</button>
-          <button type="button" @click="closeRegisterModal">Закрыть</button>
-        </form>
-      </div>
+  <div class="modal-content" @click.stop>
+    <div class="modal-header" style="position: relative;">
+      <h2>Register</h2>
+      <span class="close" @click="closeRegisterModal" style="position: absolute; top: 0; right: 0; cursor: pointer;">x</span>
     </div>
+    <form @submit.prevent="submitRegister">
+      <div>
+        <label for="reg-email">Email:</label>
+        <input type="email" id="reg-email" v-model="regEmail" required />
+      </div>
+      <div style="position: relative;">
+        <label for="reg-password">Password:</label>
+        <input :type="showPassword ? 'text' : 'password'" id="reg-password" v-model="regPassword" required />
+
+      </div>
+      <div style="position: relative;">
+        <label for="confirm-password">Confirm Password:</label>
+        <input :type="showPassword ? 'text' : 'password'" id="confirm-password" v-model="confirmPassword" required />
+       
+      </div>
+      <button type="submit">Register</button>
+      <p>
+        ¿Ya tienes una cuenta?
+        <a href="#" @click.prevent="showLogin">Login aquí</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+
+
+
+
   </div>
 </template>
 
@@ -86,12 +105,14 @@ export default {
       isRegisterModalOpen: false,
       email: '',
       password: '',
+      showPassword: false,
       regEmail: '',
       regPassword: '',
       confirmPassword: '',
       isMobile: false,
     };
   },
+  
   created() {
     this.checkMobileView();
     window.addEventListener('resize', this.checkMobileView);
@@ -108,7 +129,7 @@ export default {
     },
     openLoginModal() {
       this.isLoginModalOpen = true;
-      this.isRegisterModalOpen = false; // Close register if open
+      this.isRegisterModalOpen = false; 
     },
     closeLoginModal() {
       this.isLoginModalOpen = false;
@@ -138,7 +159,7 @@ export default {
       console.log('Register Password:', this.regPassword);
       this.closeRegisterModal();
     },
-    resetLoginForm() {-
+    resetLoginForm() {
       this.email = '';
       this.password = '';
     },
