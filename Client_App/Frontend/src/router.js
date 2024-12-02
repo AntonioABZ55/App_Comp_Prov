@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Navbar from "../src/components/Navbar.vue";
 import Competecias from "../src/components/Competencias.vue";
 import UserManagement from "../src/components/UserManagement.vue";
-import Competencias from "../src/components/Competencias.vue";  
 import Semaforos from "../src/components/Semaforos.vue";
 
 const routes = [
@@ -26,12 +25,7 @@ const routes = [
       path: "/usermanagement",
       name: "usermanagement",
       component: UserManagement
-    },
-    {
-      path: "/competencias",
-      name: "competencias",
-      component: Competencias
-    },
+    }
     
   ];
 

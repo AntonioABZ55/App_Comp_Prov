@@ -271,7 +271,7 @@ export default {
 
 .modal-content h2 {
   margin-bottom: 20px;
-  color: #4CAF50;
+  color: #000000;
 }
 
 .modal-content label {
@@ -288,7 +288,7 @@ export default {
 }
 
 .modal-content button {
-  background-color: #4CAF50;
+  background-color: #3f7654;
   color: white;
   border: none;
   padding: 10px;
@@ -299,7 +299,7 @@ export default {
 }
 
 .modal-content button[type="button"] {
-  background-color: #ccc; /* Color para el botón de cerrar */
+  background-color: #ff0000; /* Color para el botón de cerrar */
 }
 
 /* Media Queries for Responsive Design */
