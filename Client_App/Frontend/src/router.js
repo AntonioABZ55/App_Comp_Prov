@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";    
-import Navbar from "../components/Navbar.vue";
-import Semaforos from "../components/Semaforos.vue";
+import Navbar from "../src/components/Navbar.vue";
+import Semaforos from "../src/components/Semaforos.vue";
 
 const routes = [
     
@@ -14,11 +14,7 @@ const routes = [
       name: "semaforos",
       component: Semaforos
     },          
-    {
-      path: "/formulario",
-      name: "formulario",
-      component: Formulario,
-    },
+    
   ];
 
   const router = createRouter({
