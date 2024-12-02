@@ -1,20 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";    
-import Navbar from "../src/components/Navbar.vue";
-import Semaforos from "../src/components/Semaforos.vue";
-import Formulario from "../src/components/Formulario.vue";
-im
+import Navbar from "../components/Navbar.vue";
+import Semaforos from "../components/Semaforos.vue";
 
 const routes = [
     
     {
       path: "/navbar",
       name: "navbar",
-      component: Navbar.vue,
+      component: Navbar
     },
     {
       path: "/semaforos",
       name: "semaforos",
-      component: Semaforos,  
+      component: Semaforos
     },          
     {
       path: "/formulario",
