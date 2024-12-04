@@ -131,7 +131,7 @@ export default {
 
 <style scoped>
 #app {
-  background-color: #f9f9f9;
+  background-color: #f0f0f0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -145,25 +145,32 @@ header h1 {
 .table th, .table td {
   text-align: center;
 }
+.table td{
+  background-color: #45a049;
+}
+.table .thead-dark th{  
+  background-color: #45a049;
+  border-color: #45a049;
+}
 
 .btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #45a049;
+  border-color: #45a049;
 }
 
 .btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
+  background-color: #45a049;
+  border-color: #45a049;
 }
 
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #45a049;
+  border-color: #45a049;
 }
 
 .btn-primary:hover {
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #45a049;
+  border-color: #45a049;
 }
 
 .modal-header {
@@ -174,6 +181,21 @@ header h1 {
 
 .modal-body {
   padding: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #4CAF50;
+  border-radius: 5px;
+}
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #4CAF50;
+  border-radius: 5px;
 }
 </style>
 

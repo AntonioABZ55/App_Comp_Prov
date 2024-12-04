@@ -6,7 +6,8 @@ import Competencias from "../src/views/Competencias.vue";
 import gestion from "../src/views/gestion.vue";
 import Formulario from "../src/components/Formulario.vue";
 import gestionadmin from "../src/views/gestionadmin.vue";
-import UserManagement from "../src/views/UserManagement.vue"; 
+import UserManagement from "../src/views/UserManagement.vue";
+import unirse from "../src/views/unirse.vue"; 
 
 const routes = [
     
@@ -49,6 +50,11 @@ const routes = [
       path: "/user",
       name: "UserManagement",
       component: UserManagement
+    },
+    {
+      path: "/unirse",
+      name: "unirse",
+      component: unirse
     },
 
     

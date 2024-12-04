@@ -3,7 +3,7 @@
   
       <!-- Notificaciones de registro -->
       <div class="card mb-4 shadow-sm notification-box">
-        <div class="card-header bg-success text-white">
+        <div class="card-header text-white">
           <h2 class="mb-0">Notificaciones de registro</h2>
         </div>
         <div class="card-body">
@@ -31,7 +31,7 @@
   
       <!-- Gestión de usuarios -->
       <div class="card mb-4 shadow-sm user-management-box">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <div class="card-header text-white d-flex justify-content-between align-items-center">
           <h2 class="mb-0">Gestión de usuarios</h2>
           <select class="form-select w-auto">
             <option value="" selected>Filtros de búsqueda</option>
@@ -87,6 +87,7 @@
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: #45a049;
   }
   
   .card-header h2 {
@@ -95,10 +96,24 @@
   
   .card-body {
     padding: 20px;
+    background-color: #f0f0f0;
   }
   
   .table-hover tbody tr:hover {
     background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  .table thead th {
+    background-color: #45a049;
+    color: #fff;
+  }
+  
+  .notification-box {
+    background-color: #45a049;
+  }
+  
+  .user-management-box {
+    background-color: #45a049;
   }
   
   .btn {
@@ -107,24 +122,23 @@
   }
   
   .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #45a049;
+    border-color: #45a049;
   }
   
   .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: #45a049;
+    border-color: #45a049;
   }
   
   .btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: #45a049;
+    border-color: #45a049;
   }
   
   .btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
+    background-color: #45a049;
+    border-color: #45a049;
   }
   </style>
-  
   
