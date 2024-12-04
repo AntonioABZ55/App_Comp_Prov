@@ -73,7 +73,6 @@
   font-size: 0.9rem;
 }
 
-<<<<<<< HEAD
 .phone-number {
   margin-right: 20px;
 }
@@ -197,10 +196,5 @@
   .navbar-cart {
     padding: 5px 8px;
   }
-=======
-.btn-success {
-  border-radius: 50%; /* Carrito con borde redondo */
-  padding: 10px 12px;
->>>>>>> 04be2e1f99271c98346223e54af9acbdc6649f5e
-}
+} 
 </style>
