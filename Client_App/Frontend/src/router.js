@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";    
 import Navbar from "../src/components/Navbar.vue";
+
 import Semaforos from "../src/views/Semaforos.vue";
 import Home from "../src/views/Home.vue";
 import Competencias from "../src/views/Competencias.vue";
 import gestion from "../src/views/gestion.vue";
-import Formulario from "../src/components/Formulario.vue";
 import gestionadmin from "../src/views/gestionadmin.vue";
 import UserManagement from "../src/views/UserManagement.vue";
 import unirse from "../src/views/unirse.vue"; 
@@ -36,11 +36,7 @@ const routes = [
       name: "gestion",
       component: gestion
     }, 
-    {
-      path: "/formulario",
-      name: "formulario",
-      component: Formulario
-    },
+ 
     {
       path: "/gestionadmin",
       name: "gestionadmin",

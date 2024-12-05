@@ -145,32 +145,25 @@ header h1 {
 .table th, .table td {
   text-align: center;
 }
-.table td{
-  background-color: #45a049;
-}
-.table .thead-dark th{  
-  background-color: #45a049;
-  border-color: #45a049;
-}
 
 .btn-success {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-success:hover {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #218838;
+  border-color: #1e7e34;
 }
 
 .btn-primary {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-primary:hover {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 .modal-header {

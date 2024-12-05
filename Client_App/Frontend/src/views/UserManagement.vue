@@ -87,7 +87,6 @@
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-    background-color: #45a049;
   }
   
   .card-header h2 {
@@ -103,27 +102,14 @@
     background-color: rgba(0, 123, 255, 0.1);
   }
   
-  .table thead th {
-    background-color: #45a049;
-    color: #fff;
-  }
-  
-  .notification-box {
-    background-color: #45a049;
-  }
-  
-  .user-management-box {
-    background-color: #45a049;
-  }
-  
   .btn {
     padding: 8px 16px;
     font-size: 14px;
   }
   
   .btn-success {
-    background-color: #45a049;
-    border-color: #45a049;
+    background-color: #28a745;
+    border-color: #28a745;
   }
   
   .btn-danger {
