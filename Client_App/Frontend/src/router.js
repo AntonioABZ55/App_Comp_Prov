@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";    
 import Navbar from "../src/components/Navbar.vue";
-
 import Semaforos from "../src/views/Semaforos.vue";
 import Home from "../src/views/Home.vue";
 import Competencias from "../src/views/Competencias.vue";
 import gestion from "../src/views/gestion.vue";
 import gestionadmin from "../src/views/gestionadmin.vue";
-import UserManagement from "../src/views/UserManagement.vue"; 
+import UserManagement from "../src/views/UserManagement.vue";
+import Participation from "./views/Participation.vue";
+import CompetenciasActivas from "./views/CompetenciasActivas.vue";
+import MisProductos from "./views/MisProductos.vue";
 
 const routes = [
     
@@ -46,6 +48,21 @@ const routes = [
       name: "UserManagement",
       component: UserManagement
     },
+    {
+      path: "/participation",
+      name: "Participation",
+      component: Participation
+    },
+    { 
+      path: "/competenciasactivas",
+      name: "CompetenciasActivas",
+      component: CompetenciasActivas
+    },
+    {
+      path: "/misproductos",
+      name: "MisProductos",
+      component: MisProductos
+    }
 
     
   ];
