@@ -20,7 +20,7 @@ const isAdmin = (req, res, next) => {
 // Rutas protegidas para administradores
 router.get('/approved', auth, isAdmin, getApprovedUsers);
 router.get('/pending', auth, isAdmin, getPendingUsers);
-router.put('/approval-status', auth, isAdmin, updateApprovalStatus);
-router.delete('/:userId', auth, isAdmin, deleteUser);
+router.put('/:userId/approval-status', auth, isAdmin, updateApprovalStatus);
+router.delete('/:userId/delete', auth, isAdmin, deleteUser);
 
 module.exports = router;

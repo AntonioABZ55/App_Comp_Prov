@@ -1,8 +1,10 @@
 // routes/competitions.js
 const express = require('express');
 const { 
-    createCompetition, 
-    getCompetitions, 
+    createCompetition,
+    getCompetitions,
+    getCompetitionsByClient,
+    sortSuppliersInCompetition,
     deleteCompetition, 
     joinCompetition, 
     getParticipatingSuppliers,
@@ -10,7 +12,7 @@ const {
     leaveCompetition,
     createPurchaseOrder,
     generateQRCode,
-    cancelPurchaseOrder 
+    deletePurchaseOrder 
 } = require('../controllers/competitionController');
 const auth = require('../middleware/auth');
 const router = express.Router();
@@ -20,6 +22,12 @@ router.post('/create', auth, createCompetition); // POST /api/competitions/creat
 
 // Obtener Todas las Competencias
 router.get('/all', auth, getCompetitions); // GET /api/competitions/all
+
+// Obtener Competencias por Cliente 
+router.get('/client-competition', auth, getCompetitionsByClient); // GET /api/competitions/client-competition
+
+// Obtener a los proveedores de una comptencia en orden
+router.get('/:competitionId/sort-suppliers', auth, sortSuppliersInCompetition); // GET /api/competitions//:competitionId/sort-suppliers
 
 // Eliminar Competencia
 router.delete('/delete/:id', auth, deleteCompetition); // DELETE /api/competitions/delete/:id
@@ -40,9 +48,9 @@ router.delete('/:competitionId/leave', auth, leaveCompetition); // DELETE /api/c
 router.post('/:competitionId/:supplierId/orders/create', auth, createPurchaseOrder); // POST /api/competitions/:competitionId/:supplierId/orders/create
 
 // Ruta para generar el código QR para una orden de compra específica
-router.post('/:competitionId/:supplierId/orders/generate-qr', auth, generateQRCode); // POST /api/competitions/:competitionId/:supplierId/orders/:orderId/generate-qr
+router.post('/:competitionId/:supplierId/:orderId/orders/generate-qr', auth, generateQRCode); // POST /api/competitions/:competitionId/:supplierId/orders/:orderId/generate-qr
 
 // Cancelar Orden de Compra
-router.patch('/:competitionId/orders/:orderId/cancel', auth, cancelPurchaseOrder); // PATCH /api/competitions/:competitionId/orders/:orderId/cancel
+router.delete('/:competitionId/:supplierId/:orderId/orders/cancel-order', auth, deletePurchaseOrder); // PATCH /api/competitions/:competitionId/orders/:orderId/cancel
 
 module.exports = router;

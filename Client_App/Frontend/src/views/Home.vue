@@ -54,7 +54,7 @@ html, body, .home {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 50px;
+  padding: 80px;
 }
 
 .container {

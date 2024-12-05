@@ -185,6 +185,11 @@ header h1 {
   border-color: #0979B0;
 }
 
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
 .btn-primary {
   background-color: #0CB7F2;
   border-color: #0CB7F2;

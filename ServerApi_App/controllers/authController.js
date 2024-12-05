@@ -47,15 +47,21 @@ exports.login = async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) return res.status(404).send('Usuario no encontrado');
 
+        // Verificar si el approval_status es "aprobado"
+        if (user.approval_status !== 'aprobado') {
+            return res.status(403).send('El usuario no ha sido aprobado para iniciar sesión');
+        }
+
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).send('Contraseña incorrecta');
 
-        const token = jwt.sign({ id: user._id, rol: user.rol, }, process.env.JWT_SECRET, { expiresIn: '12h' });
+        const token = jwt.sign({ id: user._id, rol: user.rol }, process.env.JWT_SECRET, { expiresIn: '12h' });
         res.json({ token });
     } catch (error) {
         res.status(500).send('Error al iniciar sesión');
     }
 };
+
 // logout
 exports.logout = (req, res) => {
     // Eliminar la cookie del token
