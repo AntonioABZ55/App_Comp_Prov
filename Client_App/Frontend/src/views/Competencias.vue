@@ -72,9 +72,8 @@
               <div class="form-group">
                 <label for="competition-type" class="text-secondary font-weight-bold">Tipo de Licitación</label>
                 <select class="form-control" id="competition-type" v-model="joinCompetition.type" required>
-                  <option value="tipo1">Tipo 1</option>
-                  <option value="tipo2">Tipo 2</option>
-                  <option value="tipo3">Tipo 3</option>
+                  <option value="tipo1">General</option>
+                  <option value="tipo2">Especial</option>
                 </select>
               </div>
               <div class="form-group">
@@ -148,8 +147,13 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.table-hover tbody tr:hover {
-  background-color: #e8f8ff;
+.table th, .table td {
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.table td {
+  background-color: #7cdaf9;
 }
 
 .thead-dark th {
@@ -158,12 +162,45 @@ export default {
 }
 
 .btn-success {
-  background-color: #0CB7F2;
+  background-color: #0979B0;
   border-color: #0CB7F2;
 }
 
 .btn-success:hover {
+  background-color: #0CB7F2;
+  border-color: #0979B0;
+}
+
+.btn-success:hover {
+  background-color: #0cb7f2;
+  border-color: #0cb7f2;
+}
+
+.btn-primary {
+  background-color: #0CB7F2;
+  border-color: #0CB7F2;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
   background-color: #0979B0;
+  border-color: #0979B0;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004173;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 15px;
+}
+
+.modal-body {
+  padding: 20px;
+  background-color: #f0f0f0;
 }
 
 .modal-content {
