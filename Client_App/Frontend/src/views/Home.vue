@@ -14,7 +14,7 @@
     </section>
   </div>
 </template>
-
+k
 <script>
 import Navbar from '../components/Navbar.vue';
 

@@ -1,19 +1,18 @@
 <template>
   <div id="app" class="container mt-5" :class="{ 'modal-open': isJoinCompetitionModalOpen }">
-
     <!-- Encabezado -->
     <header class="text-center mb-4">
-      <h1>Competencias Disponibles</h1>
+      <h1 class="text-primary font-weight-bold">Competencias Disponibles</h1>
     </header>
 
     <!-- Filtros -->
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-3 filtros-container">
       <div class="d-flex align-items-center">
         <label for="filtertxt" class="mr-2 font-weight-bold">Listado de competencias disponibles:</label>
       </div>
       <div class="d-flex align-items-center">
-        <label for="filter" class="mr-2">Filtros de búsqueda:</label>
-        <select id="filter" class="form-control mr-2">
+        <label for="filter" class="mr-2 text-secondary font-weight-bold">Filtros de búsqueda:</label>
+        <select id="filter" class="form-control">
           <option value="all">Todas</option>
           <option value="categoria1">Categoría 1</option>
           <option value="categoria2">Categoría 2</option>
@@ -71,7 +70,7 @@
           <div class="modal-body">
             <form @submit.prevent="submitJoinCompetition">
               <div class="form-group">
-                <label for="competition-type">Tipo de Licitación</label>
+                <label for="competition-type" class="text-secondary font-weight-bold">Tipo de Licitación</label>
                 <select class="form-control" id="competition-type" v-model="joinCompetition.type" required>
                   <option value="tipo1">Tipo 1</option>
                   <option value="tipo2">Tipo 2</option>
@@ -79,13 +78,13 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Productos</label>
+                <label class="text-secondary font-weight-bold">Productos</label>
                 <div v-for="product in products" :key="product.id" class="form-check">
                   <input class="form-check-input" type="checkbox" :value="product.id" v-model="joinCompetition.products">
                   <label class="form-check-label">{{ product.name }}</label>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Unirse</button>
+              <button type="submit" class="btn btn-primary w-100">Unirse</button>
             </form>
           </div>
         </div>
@@ -119,146 +118,70 @@ export default {
       this.isJoinCompetitionModalOpen = false;
     },
     submitJoinCompetition() {
-      // Lógica para unirse a la competencia
       alert('Te has unido a la competencia con los productos: ' + this.joinCompetition.products.join(', '));
       this.closeJoinCompetitionModal();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
+/* Estilo General */
 #app {
-  background-color: #f0f0f0;
+  background-color: #f5f8fa;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  padding-top: 60px; /* Añadido para separar de la navbar */
+  padding: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
-.modal-open::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  z-index: 1;
+/* Filtros */
+.filtros-container label {
+  font-size: 14px;
+  color: #333;
 }
 
-.modal-open .container {
-  filter: blur(5px);
-  transition: filter 0.3s ease;
+.table {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  font-size: 28px;
-  color: #004173;
-  transition: color 0.3s ease;
+.table-hover tbody tr:hover {
+  background-color: #e8f8ff;
 }
 
-.table th, .table td {
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.table td {
-  background-color: #B6FFFF;
-}
-
-.table .thead-dark th {
+.thead-dark th {
   background-color: #004173;
-  border-color: #0979B0;
+  color: white;
 }
 
 .btn-success {
   background-color: #0CB7F2;
   border-color: #0CB7F2;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-success:hover {
   background-color: #0979B0;
-  border-color: #0979B0;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
-}
-
-.btn-primary {
-  background-color: #0CB7F2;
-  border-color: #0CB7F2;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #0979B0;
-  border-color: #0979B0;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #004173;
-  color: #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 15px;
-}
-
-.modal-body {
-  padding: 20px;
-  background-color: #f0f0f0;
 }
 
 .modal-content {
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header {
+  background-color: #004173;
+  color: white;
 }
 
 .modal-content input,
-.modal-content textarea,
 .modal-content select {
-  width: 100%;
-  margin-bottom: 15px;
-  border: 1px solid #0CB7F2;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
+  border-color: #0CB7F2;
 }
 
 .modal-content input:focus,
-.modal-content textarea:focus,
 .modal-content select:focus {
-  border-color: #004173;
-}
-
-.btn-primary {
-  background-color: #004173;
-  border-color: #004173;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #0979B0;
   border-color: #0979B0;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 </style>
