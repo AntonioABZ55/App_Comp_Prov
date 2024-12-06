@@ -1,82 +1,148 @@
 <template>
-  <div class="container mt-4">
-    <!-- Encabezado -->
-    <div class="d-flex justify-content-between align-items-center bg-success text-white p-3 rounded">
-      <div class="d-flex align-items-center">
-        <h1 class="h4 mb-0 me-3">Mis competencias</h1>
-        <select class="form-select form-select-sm" style="width: auto;">
-          <option>Ordenenes de compra</option>
-          <option>Historial</option>
-        </select>
-        <a href="#" class="text-white ms-3">Soporte</a>
+  <div class="semaforo-container">
+    <h1 class="text-center">Sistema de Semáforo</h1>
+
+    <div class="semaforo">
+      <div
+        class="luz"
+        :class="{ rojo: color === 'rojo', amarillo: color === 'amarillo', verde: color === 'verde' }"
+      ></div>
+      <div class="botones">
+        <button
+          class="btn btn-rojo"
+          @click="cambiarColor('rojo')"
+        >
+          Rojo
+        </button>
+        <button
+          class="btn btn-amarillo"
+          @click="cambiarColor('amarillo')"
+        >
+          Amarillo
+        </button>
+        <button
+          class="btn btn-verde"
+          @click="cambiarColor('verde')"
+        >
+          Verde
+        </button>
       </div>
-      <div class="d-flex align-items-center">
-        <input
-          type="text"
-          class="form-control form-control-sm me-2"
-          placeholder="Buscar..."
-        />
-        <button class="btn btn-light btn-sm">🔍</button>
-      </div>
     </div>
 
-    <!-- Título y subtítulo -->
-    <div class="mt-3">
-      <h2 class="h5">Detalle de la competencia</h2>
-      <hr />
-      <p class="mb-3">
-        Listado de los proveedores que participan en la competencia y se organizan por el semáforo.
-      </p>
-    </div>
-
-    <!-- Tabla de Proveedores -->
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead class="table-success text-white">
-          <tr>
-            <th>Nombre del proveedor</th>
-            <th>Tipo de licitación</th>
-            <th>Producto(s)</th>
-            <th>Precio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Proveedor 1</td>
-            <td>Abierta</td>
-            <td>Producto A, Producto B</td>
-            <td>$500</td>
-          </tr>
-          <tr>
-            <td>Proveedor 2</td>
-            <td>Cerrada</td>
-            <td>Producto C</td>
-            <td>$700</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Botón para generar orden -->
-    <div class="text-end mt-3">
-      <button class="btn btn-success">Generar orden de pago</button>
+    <div v-if="color === 'verde'" class="mensaje">
+      <p class="text-center">¡El semáforo está verde! Generando orden de compra...</p>
+      <router-link to="/orden" class="btn btn-success">
+        Ir a Generar Orden
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "DetalleCompetencia",
+  data() {
+    return {
+      color: '',
+    };
+  },
+  methods: {
+    cambiarColor(c) {
+      this.color = c;
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* Personalización de colores */
-.bg-success {
-  background-color: #4caf50 !important;
+.semaforo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.table-success {
-  background-color: #4caf50 !important;
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f4e79; /* Azul */
+  margin-bottom: 20px;
+}
+
+.semaforo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.luz {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px 0;
+  transition: background-color 0.5s ease;
+}
+
+.rojo {
+  background-color: #f44336;
+}
+
+.amarillo {
+  background-color: #ff9800;
+}
+
+.verde {
+  background-color: #4caf50;
+}
+
+.botones {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.botones button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.botones button:hover {
+  transform: scale(1.1);
+}
+
+.btn-rojo {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-amarillo {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-verde {
+  background-color: #4caf50;
+  color: white;
+}
+
+.mensaje {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-success:hover {
+  background-color: #388e3c;
 }
 </style>

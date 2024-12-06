@@ -9,6 +9,13 @@ import UserManagement from "../src/views/UserManagement.vue";
 import Participation from "./views/Participation.vue";
 import CompetenciasActivas from "./views/CompetenciasActivas.vue";
 import MisProductos from "./views/MisProductos.vue";
+import Orden from "./views/Orden.vue";
+import Unirse from "./views/Unirse.vue";
+import NavbarAdmin from "./components/NavbarAdmin.vue";
+import NavbarProv from "./components/NavbarProv.vue";
+import NavbarClient from "./components/NavbarCliente.vue";
+
+
 
 const routes = [
     
@@ -62,7 +69,33 @@ const routes = [
       path: "/misproductos",
       name: "MisProductos",
       component: MisProductos
-    }
+    },
+    {
+      path: "/orden",
+      name: "Orden",
+      component: Orden
+    },
+    {
+      path: "/unirse",
+      name: "Unirse",
+      component: Unirse
+    },
+    {
+      path: "/navbaradmin",
+      name: "NavbarAdmin",
+      component: NavbarAdmin
+    },
+    {
+      path: "/navbarprov",
+      name: "NavbarProv",
+      component: NavbarProv
+    },
+    {
+      path: "/navbarclient",
+      name: "NavbarClient",
+      component: NavbarClient
+    },
+
 
     
   ];

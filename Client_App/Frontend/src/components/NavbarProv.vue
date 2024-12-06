@@ -1,12 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top rounded-bottom">
     <div class="container">
-      <!-- Logo -->
-      <router-link to="/" class="btn-nav">
-        Home
-      </router-link>
+      <router-link to="/" class="btn-nav">Home</router-link>
 
-      <!-- Botón toggle para dispositivos móviles -->
       <button
         class="navbar-toggler"
         type="button"
@@ -19,33 +15,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Links del navbar -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link to="/competencias" class="btn-nav">
-              Unirse
-            </router-link>
+            <router-link to="/competencias" class="btn-nav">Competencias</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/semaforos" class="btn-nav">
-             Semaforo
-            </router-link>
+            <router-link to="/participaciones" class="btn-nav">Participaciones</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/gestion" class="btn-nav">
-              Gestion
-            </router-link>
+            <router-link to="/mis-productos" class="btn-nav">Mis Productos</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/user" class="btn-nav">
-              User
-            </router-link>
+            <button class="btn-nav ml-3" @click="showModal = true">Acceder</button>
           </li>
         </ul>
-
-        <!-- Botón de Acceso -->
-        <button class="btn-nav ml-3" @click="showModal = true">Acceder</button>
       </div>
     </div>
 
@@ -60,36 +44,17 @@
           <label for="password">Contraseña:</label>
           <input type="password" id="password" placeholder="Ingresa tu contraseña" required />
           <button type="submit" class="btn-submit">Iniciar Sesión</button>
-          <p class="switch-text">
-            ¿No tienes una cuenta? 
+          <p class="switch-text">¿No tienes cuenta? 
             <button @click="toggleLogin" class="btn-switch">Regístrate</button>
           </p>
-          <div class="social-buttons">
-            <button class="btn-social btn-google">
-              <i class="fab fa-google"></i> Google
-            </button>
-            <button class="btn-social btn-apple">
-              <i class="fab fa-apple"></i> Apple
-            </button>
-          </div>
         </form>
         <form v-else>
           <label for="new-email">Correo Electrónico:</label>
           <input type="email" id="new-email" placeholder="Ingresa tu correo" required />
           <label for="new-password">Contraseña:</label>
           <input type="password" id="new-password" placeholder="Crea tu contraseña" required />
-          <label for="confirm-password">Confirmar Contraseña:</label>
-          <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required />
-          <label for="role">Selecciona tu rol:</label>
-          <select id="role" v-model="selectedRole" required>
-            <option value="proveedor">Proveedor</option>
-            <option value="cliente">Cliente</option>
-          </select>
-          <p v-if="selectedRole === 'proveedor'" class="role-info">Los proveedores tienen acceso a herramientas de gestión de inventario.</p>
-          <p v-else-if="selectedRole === 'cliente'" class="role-info">Los clientes pueden realizar compras y consultar su historial.</p>
           <button type="submit" class="btn-register">Crear Cuenta</button>
-          <p class="switch-text">
-            ¿Ya tienes una cuenta? 
+          <p class="switch-text">¿Ya tienes cuenta? 
             <button @click="toggleLogin" class="btn-switch">Inicia Sesión</button>
           </p>
         </form>
@@ -104,7 +69,6 @@ export default {
     return {
       showModal: false,
       isLogin: true,
-      selectedRole: "cliente", // Por defecto, cliente seleccionado
     };
   },
   methods: {
@@ -118,20 +82,19 @@ export default {
 };
 </script>
 
-
 <style scoped>
 /* Navbar Styles */
 .navbar {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
-  background-color: #004173; /* Azul oscuro */
+  background-color: #004173;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-nav {
   padding: 10px 15px;
   background-color: transparent;
-  border: 2px solid #0cb7f2; /* Azul vibrante */
+  border: 2px solid #0cb7f2;
   border-radius: 50px;
   font-size: 1rem;
   color: #ffffff;
@@ -141,8 +104,8 @@ export default {
 }
 
 .btn-nav:hover {
-  background-color: #0cb7f2; /* Azul vibrante */
-  color: #004173; /* Azul oscuro */
+  background-color: #0cb7f2;
+  color: #004173;
   transform: scale(1.1);
 }
 
@@ -154,7 +117,6 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,8 +130,6 @@ export default {
   width: 90%;
   max-width: 400px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.3s ease-in-out;
-  position: relative;
 }
 
 .close-modal {
@@ -189,15 +149,7 @@ export default {
   font-weight: bold;
 }
 
-.modal-content label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #004173;
-}
-
-.modal-content input,
-.modal-content select {
+.modal-content input {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -205,7 +157,8 @@ export default {
   border-radius: 10px;
 }
 
-.btn-submit {
+.btn-submit,
+.btn-register {
   width: 100%;
   padding: 15px;
   background-color: #004173;
@@ -218,25 +171,7 @@ export default {
   transition: all 0.3s ease-in-out;
 }
 
-.btn-submit:hover {
-  background-color: #0cb7f2;
-  transform: scale(1.05);
-}
-
-.btn-register {
-  width: 100%;
-  padding: 15px;
-  background-color: #004173; 
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
+.btn-submit:hover,
 .btn-register:hover {
   background-color: #0cb7f2;
   transform: scale(1.05);
@@ -255,62 +190,5 @@ export default {
   text-align: center;
   margin-top: 10px;
   color: #004173;
-}
-
-.social-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.btn-social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background-color: #0cb7f2;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn-social i {
-  margin-right: 5px;
-}
-
-.btn-social:hover {
-  background-color: #0979b0;
-  transform: scale(1.05);
-}
-
-.btn-close {
-  margin-top: 20px;
-  background-color: #0cb7f2;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-close:hover {
-  background-color: #0979b0;
-}
-
-/* Animación */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 </style>

@@ -12,7 +12,7 @@
           <form @submit.prevent="registrarCompetencia">
             <div class="table-responsive">
               <table class="table table-bordered">
-                <thead class="thead-light">
+                <thead class="thead-dark">
                   <tr>
                     <th>ID</th>
                     <th>Nombre</th>
@@ -137,6 +137,7 @@ export default {
 h1 {
   font-size: 2rem;
   font-weight: bold;
+  color: #1f4e79; /* Azul oscuro */
 }
 
 .table {
@@ -148,7 +149,44 @@ h1 {
   vertical-align: middle;
 }
 
+.table th {
+  background-color: #1f4e79; /* Azul oscuro */
+  color: white;
+}
+
+.table td {
+  background-color: #ffffff;
+}
+
 input.form-control {
   width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+input.form-control:focus {
+  border-color: #1f4e79;
+}
+
+.btn-primary {
+  background-color: #1f4e79;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #135b83;
+}
+
+.table-responsive {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 </style>
