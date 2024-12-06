@@ -73,9 +73,8 @@
               <div class="form-group">
                 <label for="competition-type">Tipo de Licitación</label>
                 <select class="form-control" id="competition-type" v-model="joinCompetition.type" required>
-                  <option value="tipo1">Tipo 1</option>
-                  <option value="tipo2">Tipo 2</option>
-                  <option value="tipo3">Tipo 3</option>
+                  <option value="tipo1">General</option>
+                  <option value="tipo2">Especial</option>
                 </select>
               </div>
               <div class="form-group">
@@ -166,7 +165,7 @@ header h1 {
 }
 
 .table td {
-  background-color: #B6FFFF;
+  background-color: #7cdaf9;
 }
 
 .table .thead-dark th {
@@ -175,19 +174,19 @@ header h1 {
 }
 
 .btn-success {
-  background-color: #0CB7F2;
+  background-color: #0979B0;
   border-color: #0CB7F2;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-success:hover {
-  background-color: #0979B0;
+  background-color: #0CB7F2;
   border-color: #0979B0;
 }
 
 .btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
+  background-color: #0cb7f2;
+  border-color: #0cb7f2;
 }
 
 .btn-primary {

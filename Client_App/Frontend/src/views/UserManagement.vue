@@ -37,7 +37,6 @@
           <option value="" selected>Filtros de búsqueda</option>
           <option value="activo">Activo</option>
           <option value="inactivo">Inactivo</option>
-          <option value="pendiente">Pendiente</option>
         </select>
       </div>
       <div class="card-body">

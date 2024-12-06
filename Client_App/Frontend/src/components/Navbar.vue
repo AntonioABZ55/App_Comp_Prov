@@ -52,6 +52,7 @@
     <!-- Modal de Acceso -->
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content">
+        <span class="close-modal" @click="closeModal">&times;</span>
         <h2 class="modal-title">{{ isLogin ? "Iniciar Sesión" : "Registrarse" }}</h2>
         <form v-if="isLogin">
           <label for="email">Correo Electrónico:</label>
@@ -59,6 +60,15 @@
           <label for="password">Contraseña:</label>
           <input type="password" id="password" placeholder="Ingresa tu contraseña" required />
           <button type="submit" class="btn-submit">Iniciar Sesión</button>
+          <p class="switch-text">o regístrate</p>
+          <div class="social-buttons">
+            <button class="btn-social btn-google">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button class="btn-social btn-apple">
+              <i class="fab fa-apple"></i> Apple
+            </button>
+          </div>
           <p class="switch-text">
             ¿No tienes una cuenta? 
             <button @click="toggleLogin" class="btn-switch">Regístrate</button>
@@ -71,24 +81,29 @@
           <input type="password" id="new-password" placeholder="Crea tu contraseña" required />
           <label for="confirm-password">Confirmar Contraseña:</label>
           <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required />
+          <label for="role">Selecciona tu rol:</label>
+          <select id="role" required>
+            <option value="proveedor">Proveedor</option>
+            <option value="cliente">Cliente</option>
+          </select>
           <button type="submit" class="btn-register">Crear Cuenta</button>
           <p class="switch-text">
             ¿Ya tienes una cuenta? 
             <button @click="toggleLogin" class="btn-switch">Inicia Sesión</button>
           </p>
         </form>
-        <button class="btn-close" @click="closeModal">Cerrar</button>
       </div>
     </div>
   </nav>
 </template>
 
+
 <script>
 export default {
   data() {
     return {
-      showModal: false, // Estado del modal
-      isLogin: true, // Alterna entre iniciar sesión y registrarse
+      showModal: false, 
+      isLogin: true, 
     };
   },
   methods: {
@@ -96,7 +111,7 @@ export default {
       this.showModal = false;
     },
     toggleLogin() {
-      this.isLogin = !this.isLogin; // Cambia entre login y registro
+      this.isLogin = !this.isLogin; 
     },
   },
 };
@@ -152,6 +167,16 @@ export default {
   max-width: 400px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #004173;
+  cursor: pointer;
 }
 
 .modal-title {
@@ -169,7 +194,8 @@ export default {
   color: #004173;
 }
 
-.modal-content input {
+.modal-content input,
+.modal-content select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -179,11 +205,11 @@ export default {
 
 .btn-submit {
   width: 100%;
-  padding: 12px;
-  background-color: #0cb7f2;
+  padding: 15px;
+  background-color: #004173;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: bold;
   cursor: pointer;
   font-size: 1rem;
@@ -191,18 +217,19 @@ export default {
 }
 
 .btn-submit:hover {
-  background-color: #0979b0; /* Azul más oscuro */
+  background-color: #0cb7f2;
+  transform: scale(1.05);
 }
 
 .btn-register {
   width: 100%;
   padding: 15px;
-  background-color: #004173; /* Azul oscuro */
+  background-color: #004173; 
   color: white;
   border: none;
   border-radius: 15px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -226,6 +253,36 @@ export default {
   text-align: center;
   margin-top: 10px;
   color: #004173;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #0cb7f2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-social i {
+  margin-right: 5px;
+}
+
+.btn-social:hover {
+  background-color: #0979b0;
+  transform: scale(1.05);
 }
 
 .btn-close {
